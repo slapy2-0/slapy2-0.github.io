@@ -72,7 +72,7 @@ const MACHINES = [
     {
     name: "Stream",
     type: "Machine",
-    avatar: "images/stram.png",
+    avatar: "images/stream.png",
     os: "Linux",
     difficulty: "Medium",
     status: "Rooted",
