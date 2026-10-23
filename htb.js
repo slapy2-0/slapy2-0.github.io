@@ -38,6 +38,7 @@ function card(m, i) {
   const steps = (m.steps || []).map((s) => `<li><b>${esc(s.title)}.</b> <span>${esc(s.text)}</span></li>`).join("");
   const tags = (m.tags || []).map((t) => `<span>${esc(t)}</span>`).join("");
   const state = String(m.status || "").split(" ")[0];
+  const av = m.avatar ? `<img class="m-av" src="${esc(m.avatar)}" alt="${esc(m.name)} machine icon" width="64" height="64" loading="lazy">` : "";
   return `<article class="m" data-open="false">
     <button class="m-head" aria-expanded="false" aria-controls="p${i}">
       <span class="dot ${esc(state)}" title="${esc(m.status)}"></span>
@@ -48,7 +49,7 @@ function card(m, i) {
       <span class="chev"></span>
     </button>
     <div class="m-body" id="p${i}"><div class="m-clip"><div class="pad">
-      <p>${esc(m.summary)}</p>
+      <div class="m-top">${av}<p>${esc(m.summary)}</p></div>
       ${tags ? `<div class="tags">${tags}</div>` : ""}
       ${steps ? `<ol class="steps">${steps}</ol>` : ""}
       ${m.lesson ? `<p class="lesson">${esc(m.lesson)}</p>` : ""}
