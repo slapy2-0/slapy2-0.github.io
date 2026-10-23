@@ -41,8 +41,7 @@ a{color:inherit}
 .block h2,.contact h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1;margin-bottom:34px}
 
 /* about */
-.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
-.about-grid p{color:var(--mute);font-size:1.15rem;max-width:56ch}
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:start}
 .htb-card{display:flex;flex-direction:column;gap:8px;padding:24px;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--g);border-radius:14px;text-decoration:none;transition:border-color .25s,transform .2s}
 .htb-card:hover{border-color:var(--g);transform:translateY(-3px)}
 .htb-t{font-size:1.5rem;font-weight:800;color:var(--g);line-height:1.1}
@@ -61,8 +60,7 @@ a{color:inherit}
 .proj{display:flex;flex-direction:column;padding:26px;background:var(--panel);border:1px solid var(--line);border-radius:12px;transition:border-color .25s}
 .proj:hover{border-color:var(--g)}
 .proj h3{font-size:1.25rem;font-weight:600;margin-bottom:10px;line-height:1.25}
-.proj p{color:var(--mute);margin-bottom:20px}
-.proj a{margin-top:auto;align-self:flex-start;color:var(--g);font-weight:600;text-decoration:none;border-bottom:1px solid var(--g)}
+.proj p{color:var(--mute);margin-bottom:16px}
 
 /* certifications */
 .certs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -95,4 +93,44 @@ footer{text-align:center;padding:30px;color:var(--mute)}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;scroll-behavior:auto!important}
+}
+
+/* ---- additions: roles, about, approach, lab, tags ---- */
+.roles{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 6px}
+.roles li{font-family:var(--mono);font-size:.85rem;color:var(--g);border:1px solid var(--g);border-radius:999px;padding:2px 14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.tags span{font-family:var(--mono);font-size:.78rem;color:var(--g);border:1px solid var(--line);border-radius:6px;padding:2px 10px}
+.read{align-self:flex-start;margin-top:auto;color:var(--g);font-weight:600;text-decoration:none;border-bottom:1px solid var(--g)}
+.cert .read{display:inline-block;margin-top:14px}
+.empty{color:var(--mute)}
+
+.bio p{color:var(--text);font-size:1.15rem;max-width:58ch;margin-bottom:18px}
+.bio p:first-child{font-size:1.35rem}
+.facts{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--g);border-radius:14px;padding:8px 22px}
+.facts div{padding:14px 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+.facts dd{font-weight:600;font-size:1.05rem}
+.sub{font-size:1.5rem;font-weight:800;letter-spacing:-.01em;margin:56px 0 18px}
+.approach{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.approach li{counter-increment:s;border-top:2px solid var(--g);padding-top:12px}
+.approach li::before{content:counter(s);display:block;font-family:var(--mono);color:var(--g);font-size:.9rem}
+.approach b{display:block;font-size:1.05rem;font-weight:600}
+.approach span{color:var(--mute);font-size:.92rem}
+
+.lab-meta{font-family:var(--mono);color:var(--mute);font-size:.9rem;margin:-18px 0 18px}
+.lab-list{margin-bottom:22px}
+.lab-row{display:grid;grid-template-columns:14px 1fr auto auto auto;align-items:center;gap:18px;padding:16px 20px;margin-bottom:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;text-decoration:none;transition:border-color .25s}
+.lab-row:hover{border-color:var(--g)}
+.lab-name{font-size:1.15rem;font-weight:600}
+.lab-os,.lab-d{font-family:var(--mono);font-size:.82rem;color:var(--mute)}
+.dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--g)}
+.dot.Rooted{background:var(--g)}
+.dot.User{background:linear-gradient(90deg,var(--g) 50%,transparent 50%)}
+
+@media (max-width:768px){
+  .approach{grid-template-columns:1fr 1fr}
+  .lab-row{grid-template-columns:14px 1fr auto;row-gap:2px}
+  .lab-os:not(:last-child),.lab-d{display:none}
+  .lab-row .lab-os:last-child{grid-column:3}
 }
