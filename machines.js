@@ -11,11 +11,9 @@
    date       : "YYYY-MM-DD"
    steps      : the order you solved it (shown as a numbered list)
    link       : optional, a full write-up URL. Use "" to hide the button.
-   Delete the two example entries once you add real ones.
    ========================================================== */
 
 const MACHINES = [
- [
   {
     name: "Cap",
     type: "Machine",
@@ -153,4 +151,4 @@ const MACHINES = [
     lesson: "Custom web applications often have unique logical flaws.",
     link: ""
   }
-]
+];
