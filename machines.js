@@ -14,6 +14,23 @@
    ========================================================== */
 
 const MACHINES = [
+{
+    name: "Cohort",
+    type: "Machine",
+    os: "Linux",
+    difficulty: "Easy",
+    status: "Rooted",
+    date: "2026-10-24",
+    tags: ["ssrf", "marimo", "cve-2026-39987", "packagekit", "cve-2026-41651", "toctou", "suid", "web", "linux"],
+    summary: "Web application with SSRF leads to discovery of an internal Marimo notebook service vulnerable to pre-auth RCE. Initial access as marimo, then privilege escalation via PackageKit TOCTOU race condition to obtain root.",
+    steps: [
+      { title: "Foothold", text: "Enumerated the web app; found /api/validate endpoint. Exploited SSRF (bypassing loopback filter with 0.0.0.0) to access internal Nginx /status page. Leaked internal vhost: nb-1be3782a8afd3ad5.cohort.htb → 127.0.0.1:8888 (Marimo). Exploited CVE-2026-39987 (Marimo pre-auth RCE) via /terminal/ws WebSocket to execute commands as user marimo." },
+      { title: "Privilege Escalation", text: "Identified PackageKit 1.2.8 (vulnerable to CVE-2026-41651 TOCTOU). Ran public exploit to race D-Bus transaction, dropping SUID bash at /var/tmp/.suid_bash. Executed /var/tmp/.suid_bash -p to gain root shell and read /root/root.txt." },
+      { title: "Lateral Movement", text: "None required (direct user → root)." }
+    ],
+    lesson: "Always enumerate API endpoints and inspect JavaScript bundles for hidden routes. SSRF filters can be bypassed with alternative localhost representations (0.0.0.0, 127.1, [::1], decimal IP). Race conditions in privileged services (PackageKit) can yield root via SUID drops. Keep reverse shells alive by maintaining the parent WebSocket connection; use setsid/nohup for stability. Check both /tmp and /var/tmp for dropped SUID binaries.",
+    link: "https://app.hackthebox.com/machines/Cohort"
+  },
   {
     name: "Cap",
     type: "Machine",
