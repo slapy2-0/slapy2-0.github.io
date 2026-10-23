@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTB Lab Notes | Pawan Sirimanna</title>
+    <meta name="description" content="Hack The Box machines and challenges I have worked through, with notes on recon, foothold, privilege escalation and lessons learned.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono&display=swap">
+    <link rel="stylesheet" href="htb.css">
+</head>
+<body>
+
+    <header class="bar">
+        <nav class="bar-in">
+            <a class="brand" href="index.html">Sirimanna PS</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#notes">Lab notes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>HTB lab notes</h1>
+                <p>Hack The Box machines and challenges I have worked through: what I tried, what worked, and what I learned.</p>
+                <a class="go" href="#notes">Read the notes</a>
+            </div>
+            <aside class="hero-count" aria-label="Rooted machines">
+                <div class="num" id="rooted">0</div>
+                <div class="cap">rooted of <span id="total">0</span></div>
+                <ul class="split" id="split"></ul>
+            </aside>
+        </section>
+
+        <section class="notes" id="notes">
+            <div class="tools">
+                <div class="chips" id="chips" role="group" aria-label="Filter by difficulty"></div>
+                <input id="search" type="search" placeholder="Search name or tag" aria-label="Search machines">
+            </div>
+            <div id="list"></div>
+            <p class="empty" id="empty" hidden>No match. Clear the search or pick another difficulty.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 SlapY. Notes from my own lab work.</p>
+    </footer>
+
+    <script src="machines.js"></script>
+    <script src="htb.js"></script>
+</body>
+</html>
