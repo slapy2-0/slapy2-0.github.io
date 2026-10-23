@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>SlapY | Network & Cybersecurity Portfolio</title>
-
-    <meta name="description"
-          content="Personal portfolio showcasing networking, Linux, system administration and cybersecurity projects, labs and certifications.">
-
+    <meta name="description" content="Personal portfolio showcasing networking, Linux, system administration and cybersecurity projects, labs and certifications.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">Sirimanna PS</div>
-
-            <ul class="nav-links">
+    <header class="bar">
+        <nav class="bar-in">
+            <a class="brand" href="#home">Sirimanna PS</a>
+            <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="htb.html">HTB</a></li>
@@ -31,197 +27,121 @@
         </nav>
     </header>
 
-
-    <!-- Home -->
-    <section id="home" class="hero">
-
-        <div class="hero-content">
-
-            <p class="intro">Hello, I'm</p>
-
-            <h1>Pawan Sirimanna</h1>
-
-            <h2>Network & Cybersecurity Student</h2>
-
-            <p>
-                Building practical experience in networking,
-                Linux system administration and cybersecurity
-                through hands-on labs and projects.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#projects" class="btn">View My Work</a>
-                <a href="#contact" class="btn secondary">Contact Me</a>
+    <main>
+        <!-- Home -->
+        <section class="hero" id="home">
+            <div class="hero-text">
+                <p class="hi">Hello, I'm</p>
+                <h1>Pawan Sirimanna</h1>
+                <h2>Network &amp; Cybersecurity Student</h2>
+                <p class="lead">Building practical experience in networking, Linux system administration and cybersecurity through hands-on labs and projects.</p>
+                <div class="btns">
+                    <a class="go" href="#projects">View My Work</a>
+                    <a class="go ghost" href="#contact">Contact Me</a>
+                </div>
             </div>
+            <aside class="hero-side" aria-label="Study focus">
+                <div class="big">HND</div>
+                <div class="cap">Higher National Diploma</div>
+                <ul class="split">
+                    <li><span>Networking</span></li>
+                    <li><span>System administration</span></li>
+                    <li><span>Cybersecurity</span></li>
+                </ul>
+            </aside>
+        </section>
 
-        </div>
-
-    </section>
-
-
-    <!-- About -->
-    <section id="about">
-
-        <h2>About Me</h2>
-
-        <p>
-            I am a Higher National Diploma student focusing on
-            networking, system administration and cybersecurity.
-            I am developing my technical skills through practical
-            labs, projects, certifications and continuous learning.
-        </p>
-
-    </section>
-
-
-    <!-- Skills -->
-    <section id="skills">
-
-        <h2>Skills</h2>
-
-        <div class="skills-container">
-
-            <div class="skill-card">
-                <h3>Networking</h3>
-                <p>
-                    CCNA, TCP/IP, VLANs, Routing & Switching,
-                    Subnetting, Wireshark
-                </p>
+        <!-- About -->
+        <section class="block about" id="about">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <p>I am a Higher National Diploma student focusing on networking, system administration and cybersecurity. I am developing my technical skills through practical labs, projects, certifications and continuous learning.</p>
+                <a class="htb-card" href="htb.html">
+                    <span class="htb-t">HTB lab notes</span>
+                    <span class="htb-s">Hack The Box machines I have rooted, with notes on what worked.</span>
+                    <span class="htb-go">Read the notes</span>
+                </a>
             </div>
+        </section>
 
-            <div class="skill-card">
-                <h3>Linux & System Administration</h3>
-                <p>
-                    Linux, CentOS, SSH, Apache, DNS, DHCP,
-                    Firewall Management
-                </p>
+        <!-- Skills -->
+        <section class="block" id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <article class="skill">
+                    <h3>Networking</h3>
+                    <p>CCNA, TCP/IP, VLANs, Routing &amp; Switching, Subnetting, Wireshark</p>
+                </article>
+                <article class="skill">
+                    <h3>Linux &amp; System Administration</h3>
+                    <p>Linux, CentOS, SSH, Apache, DNS, DHCP, Firewall Management</p>
+                </article>
+                <article class="skill">
+                    <h3>Cybersecurity</h3>
+                    <p>Kali Linux, Nmap, Wireshark, Network Security and Security Monitoring</p>
+                </article>
+                <article class="skill">
+                    <h3>Programming</h3>
+                    <p>Python, HTML, CSS, JavaScript and SQL</p>
+                </article>
             </div>
+        </section>
 
-            <div class="skill-card">
-                <h3>Cybersecurity</h3>
-                <p>
-                    Kali Linux, Nmap, Wireshark,
-                    Network Security and Security Monitoring
-                </p>
+        <!-- Projects -->
+        <section class="block" id="projects">
+            <h2>Projects &amp; Labs</h2>
+            <div class="projects">
+                <article class="proj">
+                    <h3>Linux Server Administration Lab</h3>
+                    <p>Practical Linux server administration including SSH, Apache, DNS, firewall and user management.</p>
+                    <a href="#">View Project</a>
+                </article>
+                <article class="proj">
+                    <h3>Networking Labs</h3>
+                    <p>CCNA-based networking labs covering VLANs, routing, switching and IP addressing.</p>
+                    <a href="#">View Project</a>
+                </article>
+                <article class="proj">
+                    <h3>Wireshark Network Analysis</h3>
+                    <p>Network traffic analysis and packet inspection using Wireshark.</p>
+                    <a href="#">View Project</a>
+                </article>
             </div>
+        </section>
 
-            <div class="skill-card">
-                <h3>Programming</h3>
-                <p>
-                    Python, HTML, CSS, JavaScript and SQL
-                </p>
+        <!-- Certifications -->
+        <section class="block" id="certifications">
+            <h2>Certifications &amp; Credentials</h2>
+            <div class="certs">
+                <article class="cert">
+                    <h3>CCNA</h3>
+                    <p>Cisco Networking Academy</p>
+                </article>
+                <article class="cert">
+                    <h3>Microsoft Learn</h3>
+                    <p>Microsoft technical learning credentials</p>
+                </article>
             </div>
+        </section>
 
-        </div>
-
-    </section>
-
-
-    <!-- Projects -->
-    <section id="projects">
-
-        <h2>Projects & Labs</h2>
-
-        <div class="projects-container">
-
-            <div class="project-card">
-                <h3>Linux Server Administration Lab</h3>
-                <p>
-                    Practical Linux server administration including
-                    SSH, Apache, DNS, firewall and user management.
-                </p>
-
-                <a href="#">View Project →</a>
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="contact-in">
+                <h2>Contact</h2>
+                <p>Interested in networking, system administration, cybersecurity or technical projects?</p>
+                <div class="links">
+                    <a href="https://github.com/slapy2-0" target="_blank" rel="noopener">GitHub</a>
+                    <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="mailto:your-email@example.com">Email</a>
+                </div>
             </div>
+        </section>
+    </main>
 
-
-            <div class="project-card">
-                <h3>Networking Labs</h3>
-                <p>
-                    CCNA-based networking labs covering VLANs,
-                    routing, switching and IP addressing.
-                </p>
-
-                <a href="#">View Project →</a>
-            </div>
-
-
-            <div class="project-card">
-                <h3>Wireshark Network Analysis</h3>
-                <p>
-                    Network traffic analysis and packet inspection
-                    using Wireshark.
-                </p>
-
-                <a href="#">View Project →</a>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Certifications -->
-    <section id="certifications">
-
-        <h2>Certifications & Credentials</h2>
-
-        <div class="certifications-container">
-
-            <div class="cert-card">
-                <h3>CCNA</h3>
-                <p>Cisco Networking Academy</p>
-            </div>
-
-            <div class="cert-card">
-                <h3>Microsoft Learn</h3>
-                <p>Microsoft technical learning credentials</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Contact -->
-    <section id="contact">
-
-        <h2>Contact</h2>
-
-        <p>
-            Interested in networking, system administration,
-            cybersecurity or technical projects?
-        </p>
-
-        <div class="contact-links">
-
-            <a href="https://github.com/slapy2-0" target="_blank">
-                GitHub
-            </a>
-
-            <a href="#" target="_blank">
-                LinkedIn
-            </a>
-
-            <a href="mailto:your-email@example.com">
-                Email
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- Footer -->
     <footer>
-
-        <p>
-            © 2026 SlapY. Built with HTML, CSS and JavaScript.
-        </p>
-
+        <p>© 2026 SlapY. Built with HTML, CSS and JavaScript.</p>
     </footer>
 
-    <script src="script.js"></script>
-
+    <script src="bg.js"></script>
 </body>
 </html>
