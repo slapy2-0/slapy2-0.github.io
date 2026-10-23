@@ -17,6 +17,7 @@ const MACHINES = [
 {
     name: "Cohort",
     type: "Machine",
+    avatar: "images/cohort.png",
     os: "Linux",
     difficulty: "Easy",
     status: "Rooted",
@@ -34,6 +35,7 @@ const MACHINES = [
   {
     name: "Cap",
     type: "Machine",
+    avatar: "images/cap.png",
     os: "Linux",
     difficulty: "Easy",
     status: "Rooted",
@@ -51,6 +53,7 @@ const MACHINES = [
   {
     name: "Autopilot",
     type: "Machine",
+    avatar: "images/autopilot.png",
     os: "Windows",
     difficulty: "Insane",
     status: "Rooted",
@@ -69,6 +72,7 @@ const MACHINES = [
     {
     name: "Stream",
     type: "Machine",
+    avatar: "images/stram.png",
     os: "Linux",
     difficulty: "Medium",
     status: "Rooted",
@@ -87,6 +91,7 @@ const MACHINES = [
   {
     name: "Touch",
     type: "Machine",
+    avatar: "images/touch.png",
     os: "Windows",
     difficulty: "Easy",
     status: "Rooted",
@@ -104,6 +109,7 @@ const MACHINES = [
   {
     name: "Layover",
     type: "Machine",
+    avatar: "images/layover.png",
     os: "Linux",
     difficulty: "Medium",
     status: "Rooted",
@@ -121,6 +127,7 @@ const MACHINES = [
   {
     name: "Management",
     type: "Machine",
+    avatar: "images/management.png",
     os: "Linux",
     difficulty: "Easy",
     status: "Rooted",
@@ -138,6 +145,7 @@ const MACHINES = [
   {
     name: "Nexus",
     type: "Machine",
+    avatar: "images/nexus.png",
     os: "Linux",
     difficulty: "Easy",
     status: "Rooted",
@@ -155,6 +163,7 @@ const MACHINES = [
   {
     name: "Orion",
     type: "Machine",
+    avatar: "images/orion.png",
     os: "Linux",
     difficulty: "Easy",
     status: "Rooted",
