@@ -49,21 +49,22 @@ const MACHINES = [
     lesson: "Session files can be decrypted with default keys, and tools like runas.exe can be abused for privilege escalation.",
     link: ""
   },
-  {
+    {
     name: "Stream",
     type: "Machine",
     os: "Linux",
     difficulty: "Medium",
     status: "Rooted",
     date: "2026-10-10",
-    tags: ["web", "lfi"],
-    summary: "Medium Linux machine involving web application vulnerabilities.",
+    tags: ["xxe", "kafka", "clickhouse", "actuator", "heapdump"],
+    summary: "Medium Linux machine featuring a microservices architecture, a downstream XXE vulnerability, Kafka credential leakage, and ClickHouse abuse for root RCE.",
     steps: [
-      { title: "Recon", text: "Identified web server and subdomains." },
-      { title: "Foothold", text: "Exploited a Local File Inclusion (LFI) vulnerability to gain access." },
-      { title: "Privilege escalation", text: "Leveraged misconfigured cron jobs or SUID binaries to become root." }
+      { title: "Recon & Actuator", text: "Found nginx reverse proxy (Spring Boot API) and an AIDX FastAPI ingest service. Discovered the db.htb-airport.htb vhost pointing to ClickHouse. Downloaded a 45MB heapdump from the exposed Spring Boot Actuator." },
+      { title: "Foothold (XXE & ClickHouse)", text: "Extracted ClickHouse credentials from the heapdump to query the pipeline database. Discovered the FastAPI ingest didn't parse XML; the downstream Kafka consumer did. Triggered XXE in the consumer to read local files and exfiltrate them directly into the ClickHouse database via the parser." },
+      { title: "User & Credential Pivoting", text: "Used XXE to read /opt/kafka_2.13-4.3.1/config/server.properties to extract SASL PLAIN credentials and SSH'd as svc-infra. Consumed the aidx.identity.json.v1 Kafka topic to extract martin_cole's bcrypt hash, cracked it to 'tinkerbell', and pivoted to the user account." },
+      { title: "Root", text: "Captured the ClickHouse 'default' password by monitoring root's dlq_drainer.py process command line via /proc. Used INSERT INTO FUNCTION file() to overwrite /var/lib/clickhouse/user_files/aidx_quarantine.py with a malicious Python payload. The root-owned cron drainer executed the script, granting root access." }
     ],
-    lesson: "Always fuzz for virtual hosts and hidden directories.",
+    lesson: "Dangerous parsing isn't always at the entry point (ingest APIs can be dumb pipes). Internal message buses (Kafka) can leak credentials, and root processes may blindly execute files in unexpected locations like ClickHouse user_files.",
     link: ""
   },
   {
