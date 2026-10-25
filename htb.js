@@ -31,8 +31,30 @@ function chips() {
     .map((l) => `<button class="chip" data-l="${l}" aria-pressed="${l === level}">${l}</button>`).join("");
 }
 
+/* A machine is locked while its "unlock" date is in the future */
+function isLocked(m) {
+  if (!m.unlock) return false;
+  const d = new Date(m.unlock + "T00:00:00");
+  return !isNaN(d) && d > new Date();
+}
+const LOCK_SVG = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+
 /* cards */
 function card(m, i) {
+  if (isLocked(m)) {
+    const n = LEVELS.indexOf(m.difficulty) + 1;
+    const bars = LEVELS.map((_, k) => `<i class="${k < n ? "on" : ""}"></i>`).join("");
+    return `<article class="m lock">
+      <div class="m-head" title="Write-up locked until ${esc(m.unlock)}">
+        <span class="lk">${LOCK_SVG}</span>
+        <span class="m-name">${esc(m.name)}</span>
+        <span class="m-os">${esc(m.os)} · ${esc(m.type)}</span>
+        <span class="lvl"><span class="bars">${bars}</span>${esc(m.difficulty)}</span>
+        <span class="m-date">Unlocks ${esc(m.unlock)}</span>
+        <span></span>
+      </div>
+    </article>`;
+  }
   const n = LEVELS.indexOf(m.difficulty) + 1;
   const bars = LEVELS.map((_, k) => `<i class="${k < n ? "on" : ""}"></i>`).join("");
   const steps = (m.steps || []).map((s) => `<li><b>${esc(s.title)}.</b> <span>${esc(s.text)}</span></li>`).join("");
@@ -62,7 +84,7 @@ function render() {
   const q = query.trim().toLowerCase();
   const rows = data.filter((m) =>
     (level === "All" || m.difficulty === level) &&
-    (!q || (m.name + " " + (m.tags || []).join(" ")).toLowerCase().includes(q)));
+    (!q || (m.name + " " + (isLocked(m) ? "" : (m.tags || []).join(" "))).toLowerCase().includes(q)));
   $("#list").innerHTML = rows.map(card).join("");
   $("#empty").hidden = rows.length > 0;
 }
