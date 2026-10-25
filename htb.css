@@ -120,6 +120,15 @@ a{color:inherit}
   .player{padding-top:60px}
 }
 
+
+/* locked machine */
+.m.lock{border-style:dashed}
+.m.lock:hover{border-color:var(--line)}
+.m.lock .m-head{cursor:default}
+.m.lock .m-name{color:var(--mute)}
+.m.lock .m-date{color:var(--g)}
+.lk{color:var(--g);display:grid;place-items:center}
+
 footer{text-align:center;padding:30px;border-top:1px solid var(--line);color:var(--mute)}
 
 @media (max-width:768px){
