@@ -15,6 +15,25 @@
 
 const MACHINES = [
 {
+    name: "DutyBound",
+    type: "Machine",
+    avatar: "images/duty.png",
+    os: "Linux",
+    difficulty: "Medium",
+    status: "Rooted",
+    date: "2026-10-25",
+    unlock: "2026-10-31",
+    tags: ["sql injection", "postgresql", "rce", "x11", "systemd path unit", "csv injection", "privilege escalation"],
+    summary: "DutyBound is a Linux machine featuring a self-checkout kiosk web application (AirSnacks). The initial foothold is obtained via a SQL injection in the boarding pass (BCBP) parser, which leads to PostgreSQL command execution using COPY ... TO PROGRAM as the postgres user. Privilege escalation involves abusing X11 access to the kiosk display to inject keystrokes, open an xterm as the dutyfree-kiosk user, and write a malicious duty-rates.csv file. A systemd path unit triggers a root script that uses eval on CSV input, resulting in root code execution.",
+    steps: [
+      { title: "Foothold", text: "Enumerated the web app and found the BCBP parser endpoint (/checkout/boarding-pass/verify). Crafted a valid BCBP barcode and discovered a SQL injection in the conditional section (padding after the date). Used error-based SQLi to extract the database schema and confirmed the airsnacks_app user had the pg_execute_server_program role. Exploited COPY ... TO PROGRAM via stacked queries to gain a reverse shell as postgres." },
+      { title: "Privilege Escalation", text: "Enumerated the system and found X11 display :0 accessible from postgres. Used Python Xlib to inject Ctrl+Alt+t and open an xterm as dutyfree-kiosk. Wrote a malicious CSV to /opt/vrs/data/duty-rates.csv with an eval injection in the tax_class field. The systemd path unit vrs-duty-apply.path triggered apply-duty-rates.sh as root, executing the payload. Created a SUID bash or reverse shell to obtain root access." },
+      { title: "Lateral Movement", text: "Postgres → dutyfree-kiosk (via X11 keystroke injection) → root (via systemd CSV eval)." }
+    ],
+    lesson: "Always validate and sanitize all user input, especially in complex parsers like BCBP. PostgreSQL's COPY ... TO PROGRAM is a powerful feature that can lead to RCE if the database user has the right privileges. X11 access can be a serious security risk on kiosk systems, allowing user impersonation. Systemd path units and scripts using eval on external data can lead to privilege escalation.",
+    link: "https://app.hackthebox.com/machines/DutyBound"
+   },
+   {
     name: "Cohort",
     type: "Machine",
     avatar: "images/cohort.png",
