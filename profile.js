@@ -17,11 +17,11 @@
 const PROFILE = {
   name: "KYUBI02",
   country: "LK",
-  title: "Script Kiddie",
-  level: 33,
+  title: "Hacker",
+  level: 35,
   tier: "Ruby",
   season: 12,
-  seasonRank: 650,
+  seasonRank: 360,
   avatar: "",
   url: ""
 };
